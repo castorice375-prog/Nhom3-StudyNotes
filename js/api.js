@@ -1,13 +1,7 @@
-// ===========================
-//  api.js – FIT4015 StudyNotes
-//  Tập trung tất cả hàm gọi MockAPI
-// ===========================
-
-const API_BASE = 'https://6a0bb2c55aa893e1015a6321.mockapi.io/api/v1';
+const API_BASE = 'https://6a0d70e3769682b8ee763479.mockapi.io';
 const ENDPOINTS = {
   documents: `${API_BASE}/documents`,
 };
-
 // --- GET all documents ---
 function getAllDocuments() {
   return fetch(ENDPOINTS.documents)
@@ -16,8 +10,7 @@ function getAllDocuments() {
       return res.json();
     });
 }
-
-// --- GET single document by id ---
+// --- GET single docment by id ---
 function getDocumentById(id) {
   return fetch(ENDPOINTS.documents + '/' + id)
     .then(function(res) {
@@ -25,7 +18,6 @@ function getDocumentById(id) {
       return res.json();
     });
 }
-
 // --- POST create new document ---
 function createDocument(data) {
   return fetch(ENDPOINTS.documents, {
@@ -37,7 +29,6 @@ function createDocument(data) {
     return res.json();
   });
 }
-
 // --- PUT update document ---
 function updateDocument(id, data) {
   return fetch(ENDPOINTS.documents + '/' + id, {
@@ -49,7 +40,6 @@ function updateDocument(id, data) {
     return res.json();
   });
 }
-
 // --- DELETE document ---
 function deleteDocument(id) {
   return fetch(ENDPOINTS.documents + '/' + id, {
@@ -59,13 +49,11 @@ function deleteDocument(id) {
     return res.json();
   });
 }
-
 // --- PATCH increment view count (PUT) ---
 function incrementView(doc) {
   var newViews = (parseInt(doc.views) || 0) + 1;
   return updateDocument(doc.id, { views: newViews });
 }
-
 // --- jQuery AJAX: GET (dùng cho yêu cầu jQuery AJAX) ---
 function ajaxGetDocuments() {
   return $.ajax({
